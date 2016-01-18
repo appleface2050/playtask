@@ -1,0 +1,8 @@
+<ul>
+{% for task in latest_task_list %}
+    <li>{{ task.title }} - {{ task.score }}</li>
+
+{% endfor %}
+</ul>
+
+<a href="/playtask/test">Vote again?</a>
