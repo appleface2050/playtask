@@ -23,11 +23,17 @@ def index(request):
 
     for i in taskcomplate_list:
         task_complate = i.toJSON()
-        task_complate["task_title"] = Task.objects.get(pk=i.task_id).title
+        if Task.objects.filter(pk=i.task_id):
+            task_complate["task_title"] = Task.objects.get(pk=i.task_id).title
+        else:
+            task_complate["task_title"] = "已删除"
         task_complete_list.append(task_complate)
     for i in appetitecompleted_list:
         appetite = i.toJSON()
-        appetite["appetite_title"] = Appetite.objects.get(pk=i.appetite_id).title
+        if Appetite.objects.filter(pk=i.appetite_id):
+            appetite["appetite_title"] = Appetite.objects.get(pk=i.appetite_id).title
+        else:
+            appetite["appetite_title"] = "已删除"
         appetite_complete_list.append(appetite)
 
     context = {"latest_task_list":latest_task_list,
