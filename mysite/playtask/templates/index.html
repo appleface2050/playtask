@@ -13,7 +13,7 @@
 body,td,th {
 	font-family: Verdana, Arial, Helvetica, sans-serif;
 }
-.STYLE4 {color: #00CC00; }
+.STYLE4 {color: #00CC00}
 .STYLE5 {color: #FF0000}
 -->
 </style>
@@ -21,24 +21,35 @@ body,td,th {
 
 <body>
 <p class="STYLE1"><img src="/static/Page_1_files/u2_normal.png" width="1251" height="12" /></p>
-<p class="STYLE1">当前分数: 100  </p>
+<p class="STYLE1">{{ current_user.user_name }} 当前分数: {{ current_user.score }}</p>
 <p class="STYLE1"><img src="/static/Page_1_files/u2_normal.png" width="1251" height="12" /></p>
 <p class="STYLE1">任务列表</p>
-<form id="task" name="task" method="get" action="">
-  <p>
-    <input type="radio" name="task" value="task1" />
-    Ɏϱ1<br />
-    <input type="radio" name="task" value="task2" />
-    Ɏϱ2<br />
-    <input type="radio" name="task" value="task3" />
-  Ɏϱ3</p>
+<form id="task_id" name="task_id" method="post" action="/playtask/task_complete">
+    <p>
+    {% for task in latest_task_list %}
+        <input type="radio" name="task_id" value={{ task.pk }} />{{ task.title }} <span class="STYLE4">+{{task.score }}</span><br />
+    {% endfor %}
+    </p>
     <p><br />
-    <input type="submit" value="ΪԉɎϱ" />
+    <input type="submit" value="完成任务" />
     </p>
 </form>
+<!--
 
+-->
 <p class="STYLE1"><img src="/static/Page_1_files/u2_normal.png" width="1251" height="12" /></p>
 <p class="STYLE1">欲望列表</p>
+<form id="appetite_id" name="appetite_id" method="post" action="/playtask/appetite_complete">
+    <p>
+    {% for appetite in appetite_list %}
+        <input type="radio" name="appetite_id" value={{ appetite.pk }} />{{ appetite.title }} <span class="STYLE5">{{appetite.score }}</span><br />
+    {% endfor %}
+    </p>
+    <p><br />
+    <input type="submit" value="完成任务" />
+    </p>
+</form>
+<!--
 <form id="appetite" name="appetite" method="get" action="">
   <p>
     <input type="radio" name="appetite" value="appetite1" />
@@ -48,108 +59,111 @@ body,td,th {
     <input type="radio" name="appetite" value="appetite3" />
     Իλ3</p>
     <p><br />
-    <input type="submit" value="ʵЖԻλ" />
+    <input type="submit" value="实现欲望" />
     </p>
 </form>
+-->
 <p class="STYLE1"><img src="/static/Page_1_files/u2_normal.png" width="1251" height="12" /></p>
 <p class="STYLE1">任务管理</p>
 <form name="task_add" action="" method="get">
 	<p>
-	  <input name="task_title" type="text" value="Ɏϱtitle" />
-	  <input name="task_score" type="text" value="Ɏϱscore(˽ؖ)" />
-	  <input name="task_type" type="text" value="Ɏϱtype(˽ؖ)" />
+	  <input name="task_title" type="text" value="" placeholder="任务title"/>
+	  <input name="task_score" type="text" value="" placeholder="任务score"/>
+	  <input name="task_type" type="text" value="" placeholder="任务type"/>
   </p>
-    <p><input type="submit" value="ͭݓɎϱ" /></p>
+    <p><input type="submit" value="添加任务" /></p>
 </form>
 <form name="task_edit" action="" method="get">
 	<p>
-	  <input name="task_title" type="text" value="Ɏϱtitle" />
-	  <input name="task_score" type="text" value="Ɏϱscore(˽ؖ)" />
-	  <input name="task_type" type="text" value="Ɏϱtype(˽ؖ)" />
-	  <input name="task_status" type="text" value="Ɏϱstatus(˽ؖ)" />
+	  <input name="task_title" type="text" value="" placeholder="任务title"/>
+	  <input name="task_score" type="text" value="" placeholder="任务score"/>
+	  <input name="task_type" type="text" value="" placeholder="任务type"/>
+	  <input name="task_status" type="text" value="" placeholder="任务status"/>
   </p>
-	<p><input type="submit" value="ўلɎϱ" /></p>
+	<p><input type="submit" value="修改任务" /></p>
 </form>
 <form name="task_delete" action="" method="get">
 	<p>
-	  <input name="task_id" type="text" value="Ɏϱid" />
+	  <input name="task_id" type="text" value="" placeholder="任务id"/>
   </p>
-	<p><input type="submit" value="ɾԽɎϱ" /></p>
+	<p><input type="submit" value="删除任务" /></p>
 </form>
 <p class="STYLE1"><img src="/static/Page_1_files/u2_normal.png" width="1251" height="12" /></p>
 <p class="STYLE1">欲望管理</p>
 <form name="appetite_add" action="" method="get">
 	<p>
-	  <input name="appetite_title" type="text" value="Իλtitle" />
-	  <input name="appetite_score" type="text" value="Իλscore(˽ؖ)" />
+	  <input name="appetite_title" type="text" value="" placeholder="欲望title"/>
+	  <input name="appetite_score" type="text" value="" placeholder="欲望score"/>
     </p>
-	<p><input type="submit" value="ͭݓԻλ" /></p>
+	<p><input type="submit" value="添加欲望" /></p>
 </form>
 <form name="appetite_edit" action="" method="get">
 	<p>
-	  <input name="appetite_title" type="text" value="Իλtitle" />
-	  <input name="appetite_score" type="text" value="Իλscore(˽ؖ)" />
-	  <input name="appetite_status" type="text" value="Իλstatus(bool)" />
+	  <input name="appetite_title" type="text" value="" placeholder="欲望title"/>
+	  <input name="appetite_score" type="text" value="" placeholder="欲望score"/>
+	  <input name="appetite_status" type="text" value="" placeholder="欲望status" />
     </p>
-	<p><input type="submit" value="ўلԻλ" /></p>
+	<p><input type="submit" value="修改欲望" /></p>
 </form>
 <form name="appetite_delete" action="" method="get">
 	<p>
-	  <input name="appetite_id" type="text" value="Իλid" />
+	  <input name="appetite_id" type="text" value="" placeholder="欲望id"/>
     </p>
-	<p><input type="submit" value="ɾԽԻλ" /></p>
+	<p><input type="submit" value="删除欲望" /></p>
 </form>
 <p class="STYLE1"><img src="/static/Page_1_files/u2_normal.png" width="1251" height="12" /></p>
 <p class="STYLE1">已完成任务</p>
 <table width="300" border="0">
+  {% for record in taskcomplate_list %}
   <tr>
-    <td nowrap="nowrap"><div align="left">ѧϰӢԯ50</div></td>
+    <td nowrap="nowrap"><div align="left">{{ record.task_title }}</div></td>
     <td nowrap="nowrap"><div align="center" class="STYLE4">
-      <div align="left">+50</div>
+      <div align="left">+{{ record.score }}</div>
     </div></td>
-    <td nowrap="nowrap"><div align="left">2015-10-09</div></td>
+    <td nowrap="nowrap"><div align="left">{{ record.complete_time }}</div></td>
   </tr>
-  <tr>
-    <td nowrap="nowrap"><div align="left">ߪעθվ</div></td>
-    <td nowrap="nowrap"><div align="center" class="STYLE4">
-      <div align="left">+1000</div>
-    </div></td>
-    <td nowrap="nowrap"><div align="left">2015-10-09</div></td>
-  </tr>
-  <tr>
-    <td nowrap="nowrap"><div align="left">˯ߵ</div></td>
-    <td nowrap="nowrap"><div align="center" class="STYLE4">
-      <div align="left">+100</div>
-    </div></td>
-    <td nowrap="nowrap"><div align="left">2015-10-09</div></td>
-  </tr>
+  {% endfor %}
 </table>
-
+<!--
+-->
 <p class="STYLE1"><img src="/static/Page_1_files/u2_normal.png" width="1251" height="12" /></p>
 <p class="STYLE1">已实现欲望</p>
 <table width="300" border="0">
+    {% for record in appetitecompleted_list %}
+      <tr>
+        <td nowrap="nowrap"><div align="left">{{ record.appetite_title }}</div></td>
+        <td nowrap="nowrap"><div align="center" class="STYLE5">
+          <div align="left">{{ record.score }}</div>
+        </div></td>
+        <td nowrap="nowrap"><div align="left">{{ record.complete_time }}</div></td>
+      </tr>
+    {% endfor %}
+</table>
+<!--
+<table width="300" border="0">
   <tr>
-    <td nowrap="nowrap"><div align="left">ΦԎϷ1Сʱ</div></td>
+    <td nowrap="nowrap"><div align="left">欲望1</div></td>
     <td nowrap="nowrap"><div align="center" class="STYLE4">
       <div align="left" class="STYLE5">-60</div>
     </div></td>
     <td nowrap="nowrap"><div align="left">2015-10-09</div></td>
   </tr>
   <tr>
-    <td nowrap="nowrap">ÃԎ</td>
+    <td nowrap="nowrap">欲望2</td>
     <td nowrap="nowrap"><div align="center" class="STYLE4">
       <div align="left" class="STYLE5">-1000</div>
     </div></td>
     <td nowrap="nowrap"><div align="left">2015-10-09</div></td>
   </tr>
   <tr>
-    <td nowrap="nowrap"><div align="left">έ˯</div></td>
+    <td nowrap="nowrap"><div align="left">欲望3</div></td>
     <td nowrap="nowrap"><div align="center" class="STYLE4">
       <div align="left" class="STYLE5">-100</div>
     </div></td>
     <td nowrap="nowrap"><div align="left">2015-10-09</div></td>
   </tr>
 </table>
+-->
 <p>&nbsp;</p>
 </body>
 </html>
