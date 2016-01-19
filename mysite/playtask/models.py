@@ -15,6 +15,34 @@ class Appetite(JSONBaseModel):
     # update = models.DateTimeField(default=datetime.datetime.now(), db_index=True, verbose_name=u'创建时间')
     update = models.DateTimeField(default=timezone.now, db_index=True, verbose_name=u'创建时间')
 
+    @classmethod
+    def add_appetite(cls,appetite_title,appetite_score):
+        if int(appetite_score) > 0:
+            appetite_score = -int(appetite_score)
+        else:
+            int(appetite_score)
+        a = cls()
+        a.score = appetite_score
+        a.title = appetite_title
+        a.save()
+
+    @classmethod
+    def edit_appetite(cls,appetite_id,appetite_title,appetite_score,appetite_status):
+        if int(appetite_score) > 0:
+            appetite_score = -int(appetite_score)
+        else:
+            int(appetite_score)
+        a = cls.objects.get(pk=int(appetite_id))
+        a.title = appetite_title
+        a.score = appetite_score
+        a.status = appetite_status
+
+    @classmethod
+    def invalid_appetite(cls,appetite_id):
+        appetite_id = int(appetite_id)
+        a = cls.objects.get(pk=appetite_id)
+        a.status = False
+        a.save()
 
 class AppetiteCompleted(JSONBaseModel):
     """
@@ -45,6 +73,29 @@ class Task(JSONBaseModel):
     # update = models.DateTimeField(default=datetime.datetime.now(), db_index=True, verbose_name=u'创建时间')
     update = models.DateTimeField(default=timezone.now, db_index=True, verbose_name=u'创建时间')
 
+    @classmethod
+    def add_task(cls,task_title,task_score,task_type):
+        t = cls()
+        t.title = task_title
+        t.score = int(task_score)
+        t.type = int(task_type)
+        t.save()
+
+    @classmethod
+    def edit_task(cls, task_id,task_title,task_score,task_type,task_status):
+        t = cls.objects.get(pk=task_id)
+        t.title = task_title
+        t.status = task_status
+        t.score = int(task_score)
+        t.type = int(task_type)
+        t.save()
+
+    @classmethod
+    def invalid_task(cls, task_id):
+        task_id = int(task_id)
+        t = cls.objects.get(pk=task_id)
+        t.status = False
+        t.save()
 
 class TaskCompleted(JSONBaseModel):
     """

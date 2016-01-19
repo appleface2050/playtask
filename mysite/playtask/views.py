@@ -64,6 +64,105 @@ def appetite_complete(request):
     AppetiteCompleted.add_appetite_record(user_id=user_id,appetite_id=appetite.pk,score=appetite.score)
     return HttpResponseRedirect('/playtask/')
 
+
+def appetite_add(request):
+    """
+    欲望增加
+    """
+    appetite_title = request.POST.get("appetite_title")
+    appetite_score = request.POST.get("appetite_score")
+    if appetite_title == u"" or appetite_score == u"":
+        return HttpResponse("fail")
+    try:
+        Appetite.add_appetite(appetite_title,appetite_score)
+    except:
+        return HttpResponse("appetite add fail")
+    else:
+        return HttpResponseRedirect('/playtask/')
+
+def appetite_edit(request):
+    """
+    欲望修改
+    """
+    appetite_id = request.POST.get("appetite_id")
+    appetite_title = request.POST.get("appetite_title")
+    appetite_score = request.POST.get("appetite_score")
+    appetite_status = request.POST.get("appetite_status")
+    if appetite_id == u"" or appetite_title == u"" or appetite_score == u"" or appetite_status == u"":
+        return HttpResponse("fail")
+    if appetite_status == u"0":
+        appetite_status = False
+    try:
+        Appetite.edit_appetite(appetite_id,appetite_title,appetite_score,appetite_status)
+    except:
+        return HttpResponse("Appetite edit fail")
+    else:
+        return HttpResponseRedirect('/playtask/')
+
+def appetite_invalid(request):
+    """
+    欲望隐藏
+    """
+    appetite_id = request.POST.get("appetite_id")
+    if appetite_id == u"":
+        return HttpResponse("fail")
+    try:
+        Appetite.invalid_appetite(appetite_id)
+    except:
+        return HttpResponse("Appetite invalid fail")
+    else:
+        return HttpResponseRedirect('/playtask/')
+
+
+def task_add(request):
+    """
+    任务管理增加任务
+    """
+    task_title = request.POST.get("task_title")
+    task_score = request.POST.get("task_score")
+    task_type = request.POST.get("task_type")
+    if not task_type:
+        task_type = 0
+    if task_title == u"" or task_score == u"":
+        return HttpResponse("fail")
+    try:
+        Task.add_task(task_title,task_score,task_type)
+    except:
+        return HttpResponse("task add fail")
+    else:
+        return HttpResponseRedirect('/playtask/')
+
+def task_edit(request):
+    """
+    任务管理修改任务
+    """
+    task_id = request.POST.get("task_id")
+    task_title = request.POST.get("task_title")
+    task_score = request.POST.get("task_score")
+    task_type = request.POST.get("task_type")
+    task_status = request.POST.get("task_status")
+    if task_title == u"" or task_score == u"" or task_id == u"" or task_type == u"" or task_status == u"":
+        return HttpResponse("fail")
+    if task_status == u"0":
+        task_status = False
+    try:
+        Task.edit_task(task_id,task_title,task_score,task_type,task_status)
+    except:
+        return HttpResponse("task edit fail")
+    else:
+        return HttpResponseRedirect('/playtask/')
+
+def task_invalid(request):
+    task_id = request.POST.get("task_id")
+    if task_id == u"":
+        return HttpResponse("fail")
+    try:
+        Task.invalid_task(task_id)
+    except:
+        return HttpResponse("task invalid fail")
+    else:
+        return HttpResponseRedirect('/playtask/')
+
 def test(request):
     return HttpResponse("Hello, world. You're at the polls index.")
 
