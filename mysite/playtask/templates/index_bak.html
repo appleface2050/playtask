@@ -1,0 +1,155 @@
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+<title>playtask</title>
+<style type="text/css">
+<!--
+.STYLE1 {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	font-size: 24px;
+	color: #0099FF;
+}
+body,td,th {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+.STYLE4 {color: #00CC00; }
+.STYLE5 {color: #FF0000}
+-->
+</style>
+</head>
+
+<body>
+<p class="STYLE1"><img src="file:///D|/git/playtask/mysite/playtask/static/Page_1_files/u2_normal.png" width="1251" height="12" /></p>
+<p class="STYLE1">当前分数: 100  </p>
+<p class="STYLE1"><img src="file:///D|/git/playtask/mysite/playtask/static/Page_1_files/u2_normal.png" width="1251" height="12" /></p>
+<p class="STYLE1">任务列表</p>
+<form id="task" name="task" method="get" action="">
+  <p>
+    <input type="radio" name="task" value="task1" />
+    任务1<br />
+    <input type="radio" name="task" value="task2" />
+    任务2<br />
+    <input type="radio" name="task" value="task3" />
+  任务3</p>
+    <p><br />
+    <input type="submit" value="完成任务" />
+    </p>
+</form>
+
+<p class="STYLE1"><img src="file:///D|/git/playtask/mysite/playtask/static/Page_1_files/u2_normal.png" width="1251" height="12" /></p>
+<p class="STYLE1">欲望列表</p>
+<form id="appetite" name="appetite" method="get" action="">
+  <p>
+    <input type="radio" name="appetite" value="appetite1" />
+    欲望1<br />
+    <input type="radio" name="appetite" value="appetite2" />
+    欲望2<br />
+    <input type="radio" name="appetite" value="appetite3" />
+    欲望3</p>
+    <p><br />
+    <input type="submit" value="实现欲望" />
+    </p>
+</form>
+<p class="STYLE1"><img src="file:///D|/git/playtask/mysite/playtask/static/Page_1_files/u2_normal.png" width="1251" height="12" /></p>
+<p class="STYLE1">任务管理</p>
+<form name="task_add" action="" method="get">
+	<p>
+	  <input name="task_title" type="text" value="任务title" />
+	  <input name="task_score" type="text" value="任务score(数字)" />
+	  <input name="task_type" type="text" value="任务type(数字)" />
+  </p>
+    <p><input type="submit" value="添加任务" /></p>
+</form>
+<form name="task_edit" action="" method="get">
+	<p>
+	  <input name="task_title" type="text" value="任务title" />
+	  <input name="task_score" type="text" value="任务score(数字)" />
+	  <input name="task_type" type="text" value="任务type(数字)" />
+	  <input name="task_status" type="text" value="任务status(数字)" />
+  </p>
+	<p><input type="submit" value="修改任务" /></p>
+</form>
+<form name="task_delete" action="" method="get">
+	<p>
+	  <input name="task_id" type="text" value="任务id" />
+  </p>
+	<p><input type="submit" value="删除任务" /></p>
+</form>
+<p class="STYLE1"><img src="file:///D|/git/playtask/mysite/playtask/static/Page_1_files/u2_normal.png" width="1251" height="12" /></p>
+<p class="STYLE1">欲望管理</p>
+<form name="appetite_add" action="" method="get">
+	<p>
+	  <input name="appetite_title" type="text" value="欲望title" />
+	  <input name="appetite_score" type="text" value="欲望score(数字)" />
+    </p>
+	<p><input type="submit" value="添加欲望" /></p>
+</form>
+<form name="appetite_edit" action="" method="get">
+	<p>
+	  <input name="appetite_title" type="text" value="欲望title" />
+	  <input name="appetite_score" type="text" value="欲望score(数字)" />
+	  <input name="appetite_status" type="text" value="欲望status(bool)" />
+    </p>
+	<p><input type="submit" value="修改欲望" /></p>
+</form>
+<form name="appetite_delete" action="" method="get">
+	<p>
+	  <input name="appetite_id" type="text" value="欲望id" />
+    </p>
+	<p><input type="submit" value="删除欲望" /></p>
+</form>
+<p class="STYLE1"><img src="file:///D|/git/playtask/mysite/playtask/static/Page_1_files/u2_normal.png" width="1251" height="12" /></p>
+<p class="STYLE1">已完成任务</p>
+<table width="300" border="0">
+  <tr>
+    <td nowrap="nowrap"><div align="left">学习英语50</div></td>
+    <td nowrap="nowrap"><div align="center" class="STYLE4">
+      <div align="left">+50</div>
+    </div></td>
+    <td nowrap="nowrap"><div align="left">2015-10-09</div></td>
+  </tr>
+  <tr>
+    <td nowrap="nowrap"><div align="left">开发网站</div></td>
+    <td nowrap="nowrap"><div align="center" class="STYLE4">
+      <div align="left">+1000</div>
+    </div></td>
+    <td nowrap="nowrap"><div align="left">2015-10-09</div></td>
+  </tr>
+  <tr>
+    <td nowrap="nowrap"><div align="left">睡觉</div></td>
+    <td nowrap="nowrap"><div align="center" class="STYLE4">
+      <div align="left">+100</div>
+    </div></td>
+    <td nowrap="nowrap"><div align="left">2015-10-09</div></td>
+  </tr>
+</table>
+
+<p class="STYLE1"><img src="file:///D|/git/playtask/mysite/playtask/static/Page_1_files/u2_normal.png" width="1251" height="12" /></p>
+<p class="STYLE1">已实现欲望</p>
+<table width="300" border="0">
+  <tr>
+    <td nowrap="nowrap"><div align="left">玩游戏1小时</div></td>
+    <td nowrap="nowrap"><div align="center" class="STYLE4">
+      <div align="left" class="STYLE5">-60</div>
+    </div></td>
+    <td nowrap="nowrap"><div align="left">2015-10-09</div></td>
+  </tr>
+  <tr>
+    <td nowrap="nowrap">旅游</td>
+    <td nowrap="nowrap"><div align="center" class="STYLE4">
+      <div align="left" class="STYLE5">-1000</div>
+    </div></td>
+    <td nowrap="nowrap"><div align="left">2015-10-09</div></td>
+  </tr>
+  <tr>
+    <td nowrap="nowrap"><div align="left">晚睡</div></td>
+    <td nowrap="nowrap"><div align="center" class="STYLE4">
+      <div align="left" class="STYLE5">-100</div>
+    </div></td>
+    <td nowrap="nowrap"><div align="left">2015-10-09</div></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+</body>
+</html>
