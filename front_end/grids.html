@@ -14,6 +14,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <link href="css/font-awesome.css" rel="stylesheet"> 
 <!-- jQuery -->
 <script src="js/jquery.min.js"></script>
+<script src="framework/angular-1.3.0.14/angular.js"></script>
+<script src="angularjs/app.js"></script>
+
 <!----webfonts--->
 <link href='http://fonts.useso.com/css?family=Roboto:400,100,300,500,700,900' rel='stylesheet' type='text/css'>
 <!---//webfonts--->  
@@ -57,17 +60,26 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             </div>
             <!-- /.navbar-static-side -->
         </nav>
-    <div id="page-wrapper">
-    <form id="task_id" name="task_id" method="post" action="/playtask/task_complete">
-        <p>
-        {% for task in latest_task_list %}
-            <input type="radio" name="task_id" value={{ task.pk }} />{{ task.pk }}.{{ task.title }} <span class="STYLE4">+{{task.score }}</span><br />
-        {% endfor %}
-        </p>
-        <p><br />
-        <input type="submit" value="完成任务" />
-        </p>
-    </form>
+    <div id="page-wrapper" ng-app="playtaskControllers" ng-controller="allTask">
+
+
+    <ul class="phones">
+      <li ng-repeat="phone in phones">
+        <span>{{phone.name}}</span>
+        <p>{{phone.snippet}}</p>
+      </li>
+    </ul>
+    <ul class="phones">
+      <li ng-repeat="task in all_task">
+        <span>{{task.title}}</span>
+        <p>{{task.score}}</p>
+      </li>
+    </ul>
+<script src="angularjs/nfffamesController.js"></script>
+<script src="angularjs/controllers.js"></script>
+    </div>
+
+
         </div>
     <!--
 

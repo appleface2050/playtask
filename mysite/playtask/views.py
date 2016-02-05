@@ -173,3 +173,9 @@ def test(request):
     return HttpResponse("Hello, world. You're at the polls index.")
 
 
+def all_task(request):
+    """
+    获取所有task
+    """
+    data = Task.objects.all()
+    return HttpResponse(data)

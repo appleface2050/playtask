@@ -16,4 +16,8 @@ urlpatterns = [
     url(r'^appetite_edit$', views.appetite_edit),
     url(r'^appetite_invalid$', views.appetite_invalid),
 
+
+
+    url(r'^all_task$', views.all_task),
+
 ]
